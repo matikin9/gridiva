@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+
+<style>
+#canvas {
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.pixel {
+  border: solid 1px #bbb;
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.white {
+  background: #eee;  
+}
+
+.red {
+  background: #91212e;
+}
+
+.blue {
+  background: #214291;
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var dimension = 20;
+
+$(document).ready(function() {
+
+});
+
+$('#submit').click(function() {
+  createGrid($('#dimension').val());
+});
+
+function createGrid(n) {
+  $('#canvas').empty();
+  
+  for (var i = 0; i < n*n; i++) {
+    $('#canvas').append('<div class="pixel white"></div>');
+  }
+  $('#canvas').css({
+    width: dimension * n, 
+    height: dimension * n
+  });
+  
+  $('.pixel').click(function() {
+    if ($(this).hasClass('white')) {
+      $(this).toggleClass('white');
+      $(this).toggleClass('red');
+    } else if ($(this).hasClass('red')) {
+      $(this).toggleClass('red');
+      $(this).toggleClass('blue');
+    } else if ($(this).hasClass('blue')) {
+      $(this).toggleClass('blue');
+      $(this).toggleClass('white');
+    }
+  });
+}
+
+</script>
+</head>
+<body>
+Dimension: <input type="text" id="dimension">
+<input type="button" id="submit" value="Submit">
+<div id="canvas"></div>
+
+</body>
+</html>
