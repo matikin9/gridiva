@@ -1,0 +1,15 @@
+#canvas {
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.pixel, .color-list-item {
+  border: solid 1px #bbb;
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
